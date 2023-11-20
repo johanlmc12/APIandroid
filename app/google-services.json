@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574364489526",
+    "project_id": "codefix-78c9a",
+    "storage_bucket": "codefix-78c9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574364489526:android:5fbbada329d2042c8d8597",
+        "android_client_info": {
+          "package_name": "com.example.ucevaapp20232"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_CpY0xo_aciCezybV8dF-TGKISBGLzRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ucevaapp20232.db.DataBase;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.language.v1.Document;;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.LanguageServiceSettings;
 import com.google.cloud.language.v1.Sentiment;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.io.InputStream;
 
@@ -25,9 +28,11 @@ public class MainActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+
         final EditText inputText = findViewById(R.id.inputText);
         Button analyzeButton = findViewById(R.id.analyzeButton);
         final TextView resultView = findViewById(R.id.resultView);
+        Button ButtonTabla = findViewById(R.id.Tabla);
 
         analyzeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +40,20 @@ public class MainActivity3 extends AppCompatActivity {
                 analyzeSentiment(inputText.getText().toString(), resultView);
             }
         });
+        ButtonTabla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DataBase DataBase = new DataBase(MainActivity3.this);
+                SQLiteDatabase db = DataBase.getWritableDatabase();
+                if(db != null){
+                    Toast.makeText(MainActivity3.this, "BASE DE DATOS CREADA", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(MainActivity3.this, "ERROR EN LA BASE DE DATOS CREADA", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
 
     private void analyzeSentiment(String text, TextView resultView) {
         new Thread(new Runnable() {
