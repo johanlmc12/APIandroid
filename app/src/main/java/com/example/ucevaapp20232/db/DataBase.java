@@ -1,4 +1,5 @@
 package com.example.ucevaapp20232.db;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -30,4 +31,20 @@ public class DataBase extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
     }
+
+
+    public boolean agregarUsuario(String email, String password) {
+
+        try (SQLiteDatabase db = this.getWritableDatabase()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("email", email);
+            contentValues.put("password", password);
+
+            return db.insert(TABLE_USUARIOS, null, contentValues) != -1;
+        } catch (Exception e) {
+
+            return false;
+        }
+    }
+
 }

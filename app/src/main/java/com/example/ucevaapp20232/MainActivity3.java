@@ -40,18 +40,6 @@ public class MainActivity3 extends AppCompatActivity {
                 analyzeSentiment(inputText.getText().toString(), resultView);
             }
         });
-        ButtonTabla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DataBase DataBase = new DataBase(MainActivity3.this);
-                SQLiteDatabase db = DataBase.getWritableDatabase();
-                if(db != null){
-                    Toast.makeText(MainActivity3.this, "BASE DE DATOS CREADA", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity3.this, "ERROR EN LA BASE DE DATOS CREADA", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
 
