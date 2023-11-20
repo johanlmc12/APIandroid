@@ -30,12 +30,20 @@ public class MainActivity2 extends AppCompatActivity {
 
         Button buttonRegister = findViewById(R.id.buttonRegister);
         Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button buttonEliminar = findViewById(R.id.buttonEliminar);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 registrarUsuario();
+            }
+        });
+        buttonEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, Administrador.class);
+                startActivity(intent);
             }
         });
     }

@@ -71,6 +71,16 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.example.ucevaapp20232.BlankFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-69dp"
+        tools:layout_editor_absoluteY="-6dp" />
+
+    <Button
+        android:id="@+id/buttonEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="637dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
