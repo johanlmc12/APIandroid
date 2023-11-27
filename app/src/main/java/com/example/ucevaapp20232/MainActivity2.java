@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ucevaapp20232.db.DataBase;
+import com.example.ucevaapp20232.db.Metodo_MD5;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -46,6 +47,13 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -53,8 +61,16 @@ public class MainActivity2 extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(MainActivity2.this, "Por favor ingrese el email y la contraseña", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        String passwordCifrada = Metodo_MD5.cifrarMD5(password);
+
         DataBase db = new DataBase(this);
-        boolean result = db.agregarUsuario(email, password);
+        boolean result = db.agregarUsuario(email, passwordCifrada);
 
         if (result) {
             Toast.makeText(MainActivity2.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
@@ -62,4 +78,8 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(MainActivity2.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
+
 }

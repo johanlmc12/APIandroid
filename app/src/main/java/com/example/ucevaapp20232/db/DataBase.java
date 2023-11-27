@@ -52,6 +52,25 @@ public class DataBase extends SQLiteOpenHelper {
         }
     }
 
+    public boolean verificarUsuario(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String passwordCifrado = Metodo_MD5.cifrarMD5(password);
+
+        String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+        Cursor cursor = db.rawQuery(query, new String[] {email, passwordCifrado});
+
+        if (cursor.moveToFirst()) {
+            cursor.close();
+            db.close();
+            return true;
+        } else {
+            cursor.close();
+            db.close();
+            return false;
+        }
+    }
+
+
     public List<Usuario> obtenerTodosLosUsuarios() {
         List<Usuario> listaUsuarios = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();

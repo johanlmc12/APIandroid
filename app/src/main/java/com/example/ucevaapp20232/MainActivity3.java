@@ -32,12 +32,19 @@ public class MainActivity3 extends AppCompatActivity {
         final EditText inputText = findViewById(R.id.inputText);
         Button analyzeButton = findViewById(R.id.analyzeButton);
         final TextView resultView = findViewById(R.id.resultView);
-        Button ButtonTabla = findViewById(R.id.Tabla);
+        Button buttonVolver = findViewById(R.id.buttonVolver);
 
         analyzeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 analyzeSentiment(inputText.getText().toString(), resultView);
+            }
+        });
+        buttonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity3.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

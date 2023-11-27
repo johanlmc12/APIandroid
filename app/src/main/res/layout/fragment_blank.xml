@@ -43,13 +43,6 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:layout_gravity="bottom">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Pie de página"
-            android:textSize="20sp" />
-    </LinearLayout>
+        android:layout_gravity="bottom"/>
 
 </FrameLayout>
