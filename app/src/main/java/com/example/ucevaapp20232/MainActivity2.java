@@ -36,10 +36,10 @@ public class MainActivity2 extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 registrarUsuario();
             }
         });
+
         buttonEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +56,6 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
-
 
     private void registrarUsuario() {
         String email = editTextEmail.getText().toString();
@@ -66,10 +66,15 @@ public class MainActivity2 extends AppCompatActivity {
             return;
         }
 
-
         String passwordCifrada = Metodo_MD5.cifrarMD5(password);
-
         DataBase db = new DataBase(this);
+
+        if (email.equals("jordan-admin@gmail.com") && password.equals("Admin123")) {
+            Intent intent = new Intent(MainActivity2.this, Administrador.class);
+            startActivity(intent);
+            return;
+        }
+
         boolean result = db.agregarUsuario(email, passwordCifrada);
 
         if (result) {
@@ -78,8 +83,4 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(MainActivity2.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 }
